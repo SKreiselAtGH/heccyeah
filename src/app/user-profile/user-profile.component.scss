@@ -1,0 +1,15 @@
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.user-edit{
+  float: right;
+  margin-bottom: 500px;
+}
+
+mat-chip {
+  background-color: blue;
+  padding: 5px 10px 5px 10px;
+  border-radius: 15px;
+}

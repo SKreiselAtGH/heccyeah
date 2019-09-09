@@ -8,7 +8,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {
         MatButtonModule,
         MatCardModule,
-        MatIconModule
+        MatIconModule,
+  MatChipsModule
        } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -29,7 +30,8 @@ import { FeedComponent } from './feed/feed.component';
     RouterModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
