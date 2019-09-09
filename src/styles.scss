@@ -2,5 +2,15 @@
 
 .sidebar {
   width: 3%;
-  height: 500px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  position: fixed;
+}
+
+.large-card {
+  width: 80%;
+  left: 10%;
+  margin-top: 3%;
 }

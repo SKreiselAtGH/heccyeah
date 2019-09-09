@@ -10,12 +10,18 @@ import {
         MatCardModule,
         MatIconModule
        } from '@angular/material';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    SidebarComponent
+    SidebarComponent,
+    UserProfileComponent,
+    SettingsComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
