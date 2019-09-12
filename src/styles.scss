@@ -1,17 +1,30 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+body{
+  background-color: #0c0616;
+}
 .sidebar {
-  width: 3%;
+  width: 5%;
   height: 500px;
-  top: 0;
-  left: 0;
-display: inline-block;
+  box-shadow: 8px 8px #8d259b;
+  text-align: center;
+  top: 6%;
+  left: 1%;
+  border-radius: 6px;
+  display: inline-block;
   position: fixed;
+  background-color: #f2e5f2;
+  color: #0c0616;
 }
 
 .large-card {
-  width: 80%;
-  left: 10%;
-  margin-top: 3%;
+  width: 85%;
+  height: 4%;
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #f2e5f2;
+  color: #0c0616;
+  box-shadow: 8px 8px #8d259b;
   display: inline-block;
 }
