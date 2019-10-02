@@ -1,1 +1,39 @@
-<p>settings works!</p>
+<div class="large-card">
+   <div class="settings-title">
+     Settings
+   </div>
+  <div class="settings-content-group">
+    <b> Notifications:</b>
+    <div class="settings-content">
+      Turn on notifications for likes
+      <mat-slide-toggle class="settings-toggle" [checked]="notifsChecked"></mat-slide-toggle>
+    </div>
+    <div class="settings-content">
+      Turn on notifications for comments
+      <mat-slide-toggle class="settings-toggle" [checked]="notifsChecked"></mat-slide-toggle>
+    </div>
+    <div class="settings-content">
+      Turn on all notifications
+      <mat-slide-toggle class="settings-toggle" [(ngModel)]="notifsChecked"></mat-slide-toggle>
+    </div>
+  </div>
+    <div class="settings-content-group">
+      <b> My Feed:</b>
+      <div class="settings-content">
+        Turn on feed customization
+        <mat-slide-toggle class="settings-toggle" [checked]="feedChecked"></mat-slide-toggle>
+      </div>
+      <div class="settings-content">
+        Turn on public feed
+        <mat-slide-toggle class="settings-toggle" [checked]="feedChecked"></mat-slide-toggle>
+      </div>
+      <div class="settings-content">
+        Turn on all feed functions
+        <mat-slide-toggle class="settings-toggle" [(ngModel)]="feedChecked"></mat-slide-toggle>
+      </div>
+  </div>
+<!--  <div class="settings-content">-->
+<!--    Turn on everything-->
+<!--    <mat-slide-toggle class="settings-toggle" [(ngModel)]="allChecked();"></mat-slide-toggle>-->
+<!--  </div>-->
+</div>

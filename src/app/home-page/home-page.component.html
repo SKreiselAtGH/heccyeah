@@ -1,3 +1,10 @@
-<div class="large-card">helllooooooo</div>
-<div class="large-card">helllooooooo</div>
+<div class="large-card" *ngFor="let post of posts">
+  <div class="post-header"> {{ post.viewValue }} </div>
+  <div class="post-content"> {{ post.value }}</div>
+  <div class="post-actions">
+  <button mat-mini-fab class="action-button"><mat-icon>mood</mat-icon></button>
+    <button mat-mini-fab class="action-button"><mat-icon>mood_bad</mat-icon></button>
+
+  </div>
+</div>
 

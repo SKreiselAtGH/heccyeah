@@ -6,14 +6,19 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-  MatChipsModule
-       } from '@angular/material';
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatChipsModule,
+  MatExpansionModule,
+  MatFormFieldModule, MatSlideToggleModule
+} from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { FeedComponent } from './feed/feed.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

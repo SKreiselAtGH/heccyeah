@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
+  notifsChecked = false;
+  feedChecked = false;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+
+  // allChecked() {
+  //   this.notifsChecked = true;
+  //   this.feedChecked = true;
+  // }
 
 }

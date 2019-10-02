@@ -6,11 +6,11 @@ import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
-  {path: ' ', component: HomePageComponent},
   {path: 'home-page', component: HomePageComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'feed', component: FeedComponent}
+  {path: 'feed', component: FeedComponent},
+  {path: ' ', redirectTo: '/home-page', pathMatch: 'full'}
 ];
 
 @NgModule({
