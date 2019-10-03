@@ -1,1 +1,9 @@
-<p>feed works!</p>
+<div class="large-card" *ngFor="let feedPost of feedPosts">
+  <div class="post-header"> {{ feedPost.feedHeader }} </div>
+  <div class="post-content"> {{ feedPost.feedContent }}</div>
+  <div class="post-actions">
+    <button mat-icon-button class="action-button"><mat-icon>mood</mat-icon></button>
+    <button mat-icon-button class="action-button"><mat-icon>mood_bad</mat-icon></button>
+
+  </div>
+</div>

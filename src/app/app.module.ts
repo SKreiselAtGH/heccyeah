@@ -19,6 +19,8 @@ import { FeedComponent } from './feed/feed.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import { HelpPageComponent } from './help-page/help-page.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {FormsModule} from '@angular/forms';
     SidebarComponent,
     UserProfileComponent,
     SettingsComponent,
-    FeedComponent
+    FeedComponent,
+    HelpPageComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
