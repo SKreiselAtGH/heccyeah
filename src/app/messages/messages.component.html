@@ -1,1 +1,18 @@
-<p>messages works!</p>
+<a *ngFor="let message of messages">
+  <div class="large-card">
+  <div class="header">
+      <div class="example-header-image"></div>
+      <span class="user-name"><b>{{ message.sender }}</b></span>
+      <i class="user-handle">{{ message.senderHandle }}</i>
+  </div>
+  <br>
+      <div>
+        <div class="time-stamp">
+          {{ message.timestamp }}
+        </div>
+        <div class="last-message">
+          {{ message.text }}
+        </div>
+      </div>
+   </div>
+</a>

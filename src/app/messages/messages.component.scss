@@ -1,0 +1,14 @@
+.last-message {
+  float: right;
+  padding: 5px;
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time-stamp {
+  padding: 5px 5px 5px 10px;
+  float: left;
+  width: 75px;
+}

@@ -8,20 +8,6 @@
   margin-bottom: 5px;
 }
 
-.header {
-  display: inline;
-  & .user-name {
-    font-weight: bolder;
-    font-size: 20px;
-    padding-left: 10px;
-
-  }
-  & .user-handle {
-    font-weight: lighter;
-    padding-left: 10px;
-  }
-}
-
 .user-desc{
   padding-left: 10px;
   padding-bottom: 5px;
