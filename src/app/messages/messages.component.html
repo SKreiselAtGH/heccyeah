@@ -1,18 +1,19 @@
-<a *ngFor="let message of messages">
   <div class="large-card">
-  <div class="header">
-      <div class="example-header-image"></div>
+    <div class="msg-align" *ngFor="let message of messages">
+      <button mat-button>
+  <div class="messages-header">
       <span class="user-name"><b>{{ message.sender }}</b></span>
       <i class="user-handle">{{ message.senderHandle }}</i>
+    <span class="time-stamp">
+      {{ message.timestamp }}
+    </span>
   </div>
   <br>
       <div>
-        <div class="time-stamp">
-          {{ message.timestamp }}
-        </div>
-        <div class="last-message">
+        <span class="last-message">
           {{ message.text }}
-        </div>
+        </span>
       </div>
+      </button>
+    </div>
    </div>
-</a>

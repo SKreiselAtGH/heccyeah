@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent},
   {path: 'help-page', component: HelpPageComponent},
   {path: 'messages', component: MessagesComponent},
-  {path: ' ', redirectTo: '/home-page', pathMatch: 'full'}
+  {path: ' ', redirectTo: 'home-page', pathMatch: 'full'}
 ];
 
 @NgModule({
