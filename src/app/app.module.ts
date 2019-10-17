@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { MenuComponent } from './menu/menu.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -26,7 +26,7 @@ import { MessagesComponent } from './messages/messages.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    SidebarComponent,
+    MenuComponent,
     UserProfileComponent,
     SettingsComponent,
     FeedComponent,
