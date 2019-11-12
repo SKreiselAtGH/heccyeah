@@ -1,0 +1,22 @@
+<div class="large-card">
+  <button mat-raised-button class="back-button">Back</button>
+  <div class="messages" *ngFor="let message of chat">
+    <div class="sender">
+      {{message.sender}}
+    </div>
+
+    <div class="time-stamp">
+      {{message.timestamp}}
+    </div>
+
+    <div class="msg-text">
+      {{message.text}}
+    </div>
+
+  </div>
+  <form>
+    <mat-form-field class="msg-text-box">
+      <input matInput placeholder="Enter Message">
+    </mat-form-field>
+  </form>
+</div>

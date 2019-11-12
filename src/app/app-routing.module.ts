@@ -6,16 +6,19 @@ import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
 import { HelpPageComponent } from './help-page/help-page.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MessageDetailsComponent } from './message-details/message-details.component';
+
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/home-page', pathMatch: 'full'},
   {path: 'home-page', component: HomePageComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'feed', component: FeedComponent},
   {path: 'help-page', component: HelpPageComponent},
   {path: 'messages', component: MessagesComponent},
-  {path: ' ', redirectTo: 'home-page', pathMatch: 'full'}
+  {path: 'message-details', component: MessageDetailsComponent}
 ];
 
 @NgModule({

@@ -37,6 +37,20 @@ body{
     padding-left: 10px;
 
   }
+  & .header-title {
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  & .header-icon {
+    float: right;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+  }
   & .user-handle {
     font-weight: lighter;
     padding-left: 10px;
@@ -49,7 +63,20 @@ body{
 }
 
 .large-card {
-  width: 90%;
+  width: 91%;
+  height: 4%;
+  margin-left: 4%;
+  margin-top: 2%;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #f2e5f2;
+  color: #0c0616;
+  box-shadow: 8px 8px #8d259b;
+  display: inline-block;
+}
+
+.small-card {
+  width: 43%;
   height: 4%;
   margin-left: 4%;
   margin-top: 2%;

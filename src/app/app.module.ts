@@ -11,7 +11,9 @@ import {
   MatIconModule,
   MatChipsModule,
   MatExpansionModule,
-  MatFormFieldModule, MatSlideToggleModule
+  MatFormFieldModule,
+  MatSlideToggleModule,
+  MatInputModule
 } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -21,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { HelpPageComponent } from './help-page/help-page.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MessageDetailsComponent } from './message-details/message-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { MessagesComponent } from './messages/messages.component';
     SettingsComponent,
     FeedComponent,
     HelpPageComponent,
-    MessagesComponent
+    MessagesComponent,
+    MessageDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,8 @@ import { MessagesComponent } from './messages/messages.component';
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

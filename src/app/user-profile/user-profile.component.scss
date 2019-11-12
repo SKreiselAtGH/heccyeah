@@ -18,3 +18,24 @@ mat-chip {
   padding: 5px 10px 5px 10px;
   border-radius: 15px;
 }
+
+.comet-list{
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5%;
+  width: 90%;
+  border-bottom: black .5px solid;
+  & .comet-title {
+    margin-left: 1%;
+    float: left;
+    font-weight: bold;
+  }
+  & .comet-text {
+    margin-left: 1%;
+    float: left;
+  }
+  & .comet-time {
+    float: right;
+  }
+}
+

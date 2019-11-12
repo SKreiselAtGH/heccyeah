@@ -16,3 +16,41 @@
     <div class="user-desc">user description here</div>
   </div>
 </div>
+
+<div class="small-card">
+    <div class="header">
+      <div class="header-icon">
+        <button mat-icon-button><mat-icon>add</mat-icon></button>
+      </div>
+      <div class="header-title">
+        Planets:
+      </div>
+      <div class="planet-list" *ngFor="let planetBlog of planet">
+        {{ planetBlog.planetName }}
+      </div>
+    </div>
+</div>
+
+<div class="small-card">
+  <div class="header">
+    <div class="header-icon">
+      <button mat-icon-button><mat-icon>add</mat-icon></button>
+    </div>
+    <div class="header-title">
+      Comets:
+    </div>
+  </div>
+  <div class="comet-list" *ngFor="let cometPost of comet">
+    <button mat-button>
+      <div class="comet-title">
+        {{ cometPost.cometTitle}}
+      </div>
+      <div class="comet-time">
+        {{ cometPost.cometTimeStamp}}
+      </div>
+      <div class="comet-text">
+        {{ cometPost.cometText}}
+      </div>
+    </button>
+  </div>
+</div>
