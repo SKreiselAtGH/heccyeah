@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AngularFireModule } from '@angular/fire';
 import { MenuComponent } from './menu/menu.component';
 import {
   MatButtonModule,
@@ -24,6 +25,7 @@ import {FormsModule} from '@angular/forms';
 import { HelpPageComponent } from './help-page/help-page.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MessageDetailsComponent } from './message-details/message-details.compo
     BrowserAnimationsModule,
     MatSlideToggleModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
