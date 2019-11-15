@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AngularFireModule } from '@angular/fire';
 import { MenuComponent } from './menu/menu.component';
 import {
   MatButtonModule,
@@ -53,7 +52,6 @@ import {environment} from '../environments/environment';
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
