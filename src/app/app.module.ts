@@ -18,7 +18,9 @@ import {
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { HelpPageComponent } from './help-page/help-page.component';
@@ -52,8 +54,10 @@ import {environment} from '../environments/environment';
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [ AngularFirestore ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
