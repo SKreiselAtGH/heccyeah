@@ -1,0 +1,33 @@
+<div class="small-card centered">
+  <div class="header">
+    <div class="log-on-title">
+      Sign In
+    </div>
+  </div>
+  <form>
+        <mat-form-field class="fields">
+          <input matInput name="email" autocomplete="email" placeholder="Email/Username" [(ngModel)]="email">
+        </mat-form-field>
+        <a class="recovery">Forgot Username?</a>
+
+        <mat-form-field class="fields">
+          <div *ngIf="!checked">
+          <input matInput placeholder="Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="password">
+          </div>
+          <div *ngIf="checked">
+            <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="password">
+          </div>
+          <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
+
+        </mat-form-field>
+        <a class="recovery" href="google.com">Forgot Password?</a>
+
+  </form>
+  <div class="buttons">
+    <button class="sign-up" mat-raised-button (click)="signIn()">Sign Up</button>
+    <button class="sign-in" color="primary" mat-raised-button>Sign In</button>
+  </div>
+  <label>Don't have an account yet? Sign up.</label>
+
+
+</div>

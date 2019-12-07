@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,29 @@ export class FirebaseService {
       this.observe = this.db.collection('messages').doc(e).delete();
     }, this);
     return this.observe;
+  }
+
+  //   // Register a new user
+  //   firebase.auth().createUserWithEmailAndPassword(email, password)
+  // .catch(function (err) {
+  //     // Handle errors
+  //   });
+  //
+  // // Sign in existing user
+  //   firebase.auth().signInWithEmailAndPassword(email, password)
+  // .catch(function(err) {
+  //     // Handle errors
+  //   });
+  //
+  // // Sign out user
+  //   firebase.auth().signOut()
+  // .catch(function (err) {
+  //     // Handle errors
+  //   });
+  signIn(email: string, password: string) {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function(err) {
+        // Handle errors
+      });
   }
 }

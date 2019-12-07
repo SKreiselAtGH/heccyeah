@@ -13,7 +13,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatSlideToggleModule,
-  MatInputModule
+  MatInputModule, MatCheckboxModule
 } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -27,6 +27,7 @@ import { HelpPageComponent } from './help-page/help-page.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import {environment} from '../environments/environment';
+import { LogOnComponent } from './log-on/log-on.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {environment} from '../environments/environment';
     FeedComponent,
     HelpPageComponent,
     MessagesComponent,
-    MessageDetailsComponent
+    MessageDetailsComponent,
+    LogOnComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import {environment} from '../environments/environment';
     FormsModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatCheckboxModule
   ],
   providers: [ AngularFirestore ],
   bootstrap: [AppComponent]

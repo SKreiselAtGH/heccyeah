@@ -1,0 +1,50 @@
+.centered {
+  margin-left: 28%;
+}
+
+.log-on-title{
+  font-weight: bolder;
+  font-size: 30px;
+  padding-left: 10px;
+  margin-left: 40%;
+}
+
+.fields {
+  margin-top: 5%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.recovery {
+  float: right;
+  margin-right: 5%;
+  color: #8d259b;
+  text-decoration: none;
+  .recovery.visited {
+    color: #8d259b;
+  }
+  .recovery.hover {
+    color: #f2e5f2;
+  }
+}
+
+.buttons {
+  margin-top: 12%;
+  margin-bottom: 5%;
+  margin-left: 30%;
+  height: 100%;
+  width: 100%;
+}
+.sign-in {
+  margin-left: 10%;
+  color: white;
+  background-color: #8d259b;
+}
+
+label {
+  color: #8d259b;
+  font-weight: bold;
+  margin-left: 28%;
+  margin-bottom: 10%;
+}
+
