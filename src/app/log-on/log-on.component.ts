@@ -13,9 +13,12 @@ export class LogOnComponent implements OnInit {
   checked = false;
   password = '';
   email = '';
+  username = '';
   userEmail = '';
   userPassword = '';
-
+  confirmPassword = '';
+  signUpToggle = false;
+  passwordValid = true;
   constructor(
     private firebaseService: FirebaseService
   ) {}
@@ -27,10 +30,20 @@ export class LogOnComponent implements OnInit {
     this.userPassword = this.password;
     this.userEmail = this.email;
     debugger;
-    console.log(`Password: ${this.userPassword}, Email: ${this.userEmail}`);
-    this.firebaseService.signIn(this.userEmail, this.userPassword);
+    this.firebaseService.emailLogin(this.userEmail, this.userPassword);
   }
 
+  signUp() {
+    this.signUpToggle = true;
+  }
+
+  testPassword() {
+    if (this.password === this.confirmPassword) {
+      this.passwordValid = true;
+    } else {
+      this.passwordValid = false;
+    }
+  }
 
 
 }

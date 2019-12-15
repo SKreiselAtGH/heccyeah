@@ -28,6 +28,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import {environment} from '../environments/environment';
 import { LogOnComponent } from './log-on/log-on.component';
+import { HttpClientModule } from '@angular/common/http';
+// import { HttpModule } from '@angular/http';
+
+
+
 
 @NgModule({
   declarations: [
@@ -58,7 +63,8 @@ import { LogOnComponent } from './log-on/log-on.component';
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [ AngularFirestore ],
   bootstrap: [AppComponent]

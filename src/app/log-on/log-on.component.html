@@ -1,31 +1,76 @@
 <div class="small-card centered">
-  <div class="header">
-    <div class="log-on-title">
-      Sign In
+  <ng-template [ngIf]="!signUpToggle">
+    <div class="header">
+      <div class="log-on-title">
+        Sign In
+      </div>
     </div>
-  </div>
-  <form>
-        <mat-form-field class="fields">
-          <input matInput name="email" autocomplete="email" placeholder="Email/Username" [(ngModel)]="email">
-        </mat-form-field>
-        <a class="recovery">Forgot Username?</a>
+    <form>
+      <mat-form-field class="fields">
+        <input matInput name="email" autocomplete="email" placeholder="Email/Username" [(ngModel)]="email">
+      </mat-form-field>
+      <a class="recovery">Forgot Username?</a>
 
-        <mat-form-field class="fields">
-          <div *ngIf="!checked">
+      <mat-form-field class="fields">
+        <div *ngIf="!checked">
           <input matInput placeholder="Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="password">
-          </div>
-          <div *ngIf="checked">
-            <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="password">
-          </div>
-          <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
+        </div>
+        <div *ngIf="checked">
+          <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="password">
+        </div>
+        <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
 
-        </mat-form-field>
-        <a class="recovery" href="google.com">Forgot Password?</a>
+      </mat-form-field>
+      <a class="recovery" href="google.com">Forgot Password?</a>
 
-  </form>
-  <div class="buttons">
-    <button class="sign-up" mat-raised-button (click)="signIn()">Sign Up</button>
-    <button class="sign-in" color="primary" mat-raised-button>Sign In</button>
+    </form>
+  </ng-template>
+  <ng-template [ngIf]="signUpToggle">
+    <div class="header">
+      <div class="log-on-title">
+        Sign Up
+      </div>
+    </div>
+    <form>
+      <mat-form-field class="fields">
+        <input matInput name="email" autocomplete="email" placeholder="Email" [(ngModel)]="email">
+      </mat-form-field>
+
+      <mat-form-field class="fields">
+        <input matInput name="username" autocomplete="on" placeholder="Username" [(ngModel)]="username">
+      </mat-form-field>
+
+      <mat-form-field class="fields">
+        <div *ngIf="!checked">
+          <input matInput placeholder="Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="password">
+        </div>
+        <div *ngIf="checked">
+          <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="password">
+        </div>
+        <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
+
+      </mat-form-field>
+
+      <mat-form-field class="fields">
+        <div *ngIf="!checked">
+          <input matInput placeholder="Confirm Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="confirmPassword">
+        </div>
+        <div *ngIf="checked">
+          <input matInput placeholder="Confirm Password" name="password" autocomplete="current-password" [(ngModel)]="confirmPassword">
+        </div>
+        <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
+
+      </mat-form-field>
+
+    </form>
+  </ng-template>
+  <div class="buttons" *ngIf="!signUpToggle">
+    <button class="sign-up" mat-raised-button (click)="signUp()">Sign Up</button>
+    <button class="sign-in" color="primary" mat-raised-button (click)="signIn()">Sign In</button>
+  </div>
+
+  <div class="SUbuttons" *ngIf="signUpToggle">
+    <button class="sign-in" color="primary" mat-raised-button (click)="signUp()">Sign Up</button>
   </div>
   <label>Don't have an account yet? Sign up.</label>
 

@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument, DocumentData} from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
+import {User} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class FirebaseService {
 
   public ids: string[];
   observe: Observable<any>;
+  private fs: any;
+  loggedIn = false;
+  name = '';
+  private auth: any;
   constructor(public db: AngularFirestore,
               public http: HttpClient) { }
 
@@ -67,9 +72,50 @@ export class FirebaseService {
   //     // Handle errors
   //   });
   signIn(email: string, password: string) {
-      firebase.auth().signInWithEmailAndPassword(email, password)
-    .catch(function(err) {
-        // Handle errors
+      firebase.auth().signInWithEmailAndPassword(email, password);
+  }
+
+  emailLogin(email, password) {
+    let obs: Observable<any>;
+    if (this.loggedIn === true) {
+      console.log('You are already logged in');
+    } else {
+      obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((credentials) => {
+          this.loggedIn = true;
+          this.updateUserData(credentials.user);
+        }).catch((error) => {
+          const errorCode = error.code;
+          console.log(errorCode);
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        }));
+    }
+    return obs;
+  }
+  private oAuthLogin(provider) {
+    this.loggedIn = true;
+    return this.auth.auth.signInWithPopup(provider)
+      .then((credentials) => {
+        this.name = credentials.user.displayName;
+        this.updateUserData(credentials.user);
+      });
+  }
+  private updateUserData(user) {
+
+    const userRef: AngularFirestoreDocument<any> = this.fs.doc(`users/${user.uid}`);
+    userRef.get().toPromise()
+      .then((res) => {
+        let data: { uid: any; photoURL: string; displayName: string; email: any };
+        data = {
+          uid: user.uid,
+          displayName: this.name,
+          photoURL: 'https://www.civhc.org/wp-content/uploads/2018/10/question-mark.png',
+          email: user.email,
+        };
+        // this.userHold = data;
+        return userRef.set(data, { merge: true });
+
       });
   }
 }
