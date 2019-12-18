@@ -37,35 +37,45 @@
       </mat-form-field>
 
       <mat-form-field class="fields">
+        <input matInput name="firstName" autocomplete="on" placeholder="First Name" [(ngModel)]="firstName">
+      </mat-form-field>
+
+      <mat-form-field class="fields">
+        <input matInput name="lastName" autocomplete="on" placeholder="Last Name" [(ngModel)]="lastName">
+      </mat-form-field>
+
+      <mat-form-field class="fields">
         <input matInput name="username" autocomplete="on" placeholder="Username" [(ngModel)]="username">
       </mat-form-field>
 
       <mat-form-field class="fields">
         <div *ngIf="!checked">
-          <input matInput placeholder="Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="password">
+          <input matInput placeholder="Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="newPassword">
         </div>
         <div *ngIf="checked">
-          <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="password">
+          <input matInput placeholder="Password" name="password" autocomplete="current-password" [(ngModel)]="newPassword">
         </div>
         <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
-
+        <mat-hint class="error" *ngIf="!passwordValid">Both passwords must match</mat-hint>
+        <mat-hint class="error" *ngIf="!passQualValid">Password must include: 8 alphanumeric characters, 1 uppercase, 1 special, 1 numerical</mat-hint>
       </mat-form-field>
 
       <mat-form-field class="fields">
-        <div *ngIf="!checked">
-          <input matInput placeholder="Confirm Password" type="password" name="password" autocomplete="current-password" [(ngModel)]="confirmPassword">
+        <div *ngIf="!checked2">
+          <input matInput placeholder="Confirm Password" type="password" name="password" autocomplete="confirm-password" [(ngModel)]="confirmPassword">
         </div>
-        <div *ngIf="checked">
-          <input matInput placeholder="Confirm Password" name="password" autocomplete="current-password" [(ngModel)]="confirmPassword">
+        <div *ngIf="checked2">
+          <input matInput placeholder="Confirm Password" name="password" autocomplete="confirm-password" [(ngModel)]="confirmPassword">
         </div>
-        <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked">Show/Hide</mat-checkbox>
-
+        <mat-checkbox matSuffix color="primary" name="toggle" [(ngModel)]="checked2">Show/Hide</mat-checkbox>
+        <mat-hint class="error" *ngIf="!passwordValid">Both passwords must match</mat-hint>
+        <mat-hint class="error" *ngIf="!passQualValid">Password must include: 8 alphanumeric characters, 1 uppercase, 1 special, 1 numerical</mat-hint>
       </mat-form-field>
 
     </form>
   </ng-template>
   <div class="buttons" *ngIf="!signUpToggle">
-    <button class="sign-up" mat-raised-button (click)="signUp()">Sign Up</button>
+    <button class="sign-up" mat-raised-button (click)="formChange()">Sign Up</button>
     <button class="sign-in" color="primary" mat-raised-button (click)="signIn()">Sign In</button>
   </div>
 

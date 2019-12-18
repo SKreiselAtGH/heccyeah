@@ -3,6 +3,8 @@ import {AngularFirestore, AngularFirestoreDocument, DocumentData} from '@angular
 import { from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
+import 'firebase/auth';
+
 import {User} from 'firebase';
 
 @Injectable({
@@ -55,10 +57,22 @@ export class FirebaseService {
   }
 
   //   // Register a new user
-  //   firebase.auth().createUserWithEmailAndPassword(email, password)
-  // .catch(function (err) {
-  //     // Handle errors
-  //   });
+  createUser(email, password, firstName, lastName, handle) {
+    let newUser: { email: any; password: string; fullName: string; handle: any };
+    newUser = {
+      handle,
+      fullName: firstName + lastName,
+      password,
+      email,
+    };
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(r => {
+        this.loggedIn = true;
+        console.log(newUser);
+      });
+
+  }
+
   //
   // // Sign in existing user
   //   firebase.auth().signInWithEmailAndPassword(email, password)
