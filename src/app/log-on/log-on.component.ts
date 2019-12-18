@@ -39,23 +39,24 @@ export class LogOnComponent implements OnInit {
   signIn() {
     this.userPassword = this.password;
     this.userEmail = this.email;
-    this.firebaseService.emailLogin(this.userEmail, this.userPassword);
+    if (this.userEmail.length > 0 && this.userPassword.length > 0) {
+      this.firebaseService.emailLogin(this.userEmail, this.userPassword);
+    }
   }
 
   formChange() {
-    this.signUpToggle = true;
+    this.signUpToggle = !this.signUpToggle;
   }
 
   signUp() {
-    if (this.isValid()) {
+    if (this.isValidSignUp()) {
      this.firebaseService.createUser(this.email, this.newPassword, this.firstName, this.lastName, this.username);
     } else {
         console.log('Invalid sign up');
       }
-  debugger;
   }
 
-  isValid() {
+  isValidSignUp() {
     this.testPassword();
     this.emailValid = (this.email.length > 0);
     this.usernameValid = (this.username.length > 0);

@@ -61,7 +61,7 @@ export class FirebaseService {
     let newUser: { email: any; password: string; fullName: string; handle: any };
     newUser = {
       handle,
-      fullName: firstName + lastName,
+      fullName: firstName + ' ' + lastName,
       password,
       email,
     };
@@ -69,7 +69,9 @@ export class FirebaseService {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(r => {
         this.loggedIn = true;
         console.log(newUser);
-      });
+      }, err => {
+       console.log('cannot create new user');
+    });
 
   }
 
@@ -85,9 +87,7 @@ export class FirebaseService {
   // .catch(function (err) {
   //     // Handle errors
   //   });
-  signIn(email: string, password: string) {
-      firebase.auth().signInWithEmailAndPassword(email, password);
-  }
+
 
   emailLogin(email, password) {
     let obs: Observable<any>;

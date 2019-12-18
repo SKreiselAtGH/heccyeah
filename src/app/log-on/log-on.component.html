@@ -79,7 +79,8 @@
     <button class="sign-in" color="primary" mat-raised-button (click)="signIn()">Sign In</button>
   </div>
 
-  <div class="SUbuttons" *ngIf="signUpToggle">
+  <div class="buttons" *ngIf="signUpToggle">
+    <button class="sign-up" mat-raised-button (click)="formChange()">Back</button>
     <button class="sign-in" color="primary" mat-raised-button (click)="signUp()">Sign Up</button>
   </div>
   <label>Don't have an account yet? Sign up.</label>
