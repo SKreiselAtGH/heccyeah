@@ -3,6 +3,7 @@ import { FirebaseService } from '../services/firebase-service/firebase.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-log-on',
@@ -30,7 +31,8 @@ export class LogOnComponent implements OnInit {
   lastNValid = true;
 
   constructor(
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class LogOnComponent implements OnInit {
     this.userEmail = this.email;
     if (this.userEmail.length > 0 && this.userPassword.length > 0) {
       this.firebaseService.emailLogin(this.userEmail, this.userPassword);
+      this.router.navigateByUrl('/home-page');
     }
   }
 

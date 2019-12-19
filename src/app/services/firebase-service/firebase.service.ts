@@ -99,12 +99,10 @@ export class FirebaseService {
           this.loggedIn = true;
           this.updateUserData(credentials.user);
         }).catch((error) => {
-          const errorCode = error.code;
-          console.log(errorCode);
-          const errorMessage = error.message;
-          console.log(errorMessage);
+          console.log('error loggin in');
         }));
     }
+    console.log(obs);
     return obs;
   }
   private oAuthLogin(provider) {
@@ -117,16 +115,18 @@ export class FirebaseService {
   }
   private updateUserData(user) {
 
-    const userRef: AngularFirestoreDocument<any> = this.fs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.fs.doc(`users/${user.id}`);
     userRef.get().toPromise()
       .then((res) => {
-        let data: { uid: any; photoURL: string; displayName: string; email: any };
+        let data: { email: any; password: string; fullName: string; handle: any, id: any };
         data = {
-          uid: user.uid,
-          displayName: this.name,
-          photoURL: 'https://www.civhc.org/wp-content/uploads/2018/10/question-mark.png',
+          id: user.uid,
+          handle: user.handle,
           email: user.email,
+          password: user.password,
+          fullName: user.fullName
         };
+        console.log(data);
         // this.userHold = data;
         return userRef.set(data, { merge: true });
 
