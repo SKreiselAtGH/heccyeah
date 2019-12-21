@@ -18,6 +18,7 @@ export class FirebaseService {
   loggedIn = false;
   name = '';
   private auth: any;
+  private newUser: any;
   constructor(public db: AngularFirestore,
               public http: HttpClient) { }
 
@@ -56,7 +57,7 @@ export class FirebaseService {
     return this.observe;
   }
 
-  //   // Register a new user
+  //   Create a new user
   createUser(email, password, firstName, lastName, handle) {
     let newUser: { email: any; password: string; fullName: string; handle: any };
     newUser = {
@@ -65,23 +66,39 @@ export class FirebaseService {
       password,
       email,
     };
+    const fullName = firstName + ' ' + lastName;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(r => {
         this.loggedIn = true;
-        console.log(newUser);
+        this.writeUserData( fullName, email, handle, firstName, lastName);
+
       }, err => {
-       console.log('cannot create new user');
+       console.log('cannot create new user: ', err);
     });
 
   }
 
-  //
-  // // Sign in existing user
-  //   firebase.auth().signInWithEmailAndPassword(email, password)
-  // .catch(function(err) {
-  //     // Handle errors
-  //   });
-  //
+  // write the data to the DB
+  writeUserData(name, email, handle, firstName, lastName) {
+    const db = firebase.firestore();
+    db.collection('app/users/user_info').add({
+      user_handle: handle,
+      user_email: email,
+      user_fullname: name,
+      user_lname: lastName,
+      user_fname: firstName
+    })
+      .then(docRef => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch(error => {
+        console.error('Error adding document: ', error);
+      });
+
+    console.log('write user data');
+  }
+
+
   // // Sign out user
   //   firebase.auth().signOut()
   // .catch(function (err) {
@@ -96,8 +113,16 @@ export class FirebaseService {
     } else {
       obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
         .then((credentials) => {
-          this.loggedIn = true;
-          this.updateUserData(credentials.user);
+
+          const user = firebase.auth().currentUser;
+
+          if (user) {
+            this.loggedIn = true;
+            console.log('we gucci');
+
+          } else {
+            this.loggedIn = false;
+          }
         }).catch((error) => {
           console.log('error loggin in');
         }));
@@ -105,31 +130,12 @@ export class FirebaseService {
     console.log(obs);
     return obs;
   }
-  private oAuthLogin(provider) {
-    this.loggedIn = true;
-    return this.auth.auth.signInWithPopup(provider)
-      .then((credentials) => {
-        this.name = credentials.user.displayName;
-        this.updateUserData(credentials.user);
-      });
-  }
-  private updateUserData(user) {
 
-    const userRef: AngularFirestoreDocument<any> = this.fs.doc(`users/${user.id}`);
-    userRef.get().toPromise()
-      .then((res) => {
-        let data: { email: any; password: string; fullName: string; handle: any, id: any };
-        data = {
-          id: user.uid,
-          handle: user.handle,
-          email: user.email,
-          password: user.password,
-          fullName: user.fullName
-        };
-        console.log(data);
-        // this.userHold = data;
-        return userRef.set(data, { merge: true });
-
-      });
+  getUser() {
+    const db = firebase.firestore();
+    const user = firebase.auth().currentUser;
+    const userRef = db.collection('app').doc('users').collection('user_info').doc('0jhdtF94LvpxmTNHJrpp');
+    userRef.get()
+    console.log(userRef);
   }
 }

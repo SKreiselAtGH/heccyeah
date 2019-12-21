@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Chat} from '../message-details/message-details.component';
+import { FirebaseService } from "../services/firebase-service/firebase.service";
 
 export interface Comet {
       cometTitle: string;
@@ -21,8 +22,10 @@ export class UserProfileComponent implements OnInit {
 
   comet: Comet[] = [
     {cometTitle: 'This is my first post on HeccYeah', cometText: 'short.', cometTimeStamp: '11:59 pm'},
-    {cometTitle: 'This is my first post on HeccYeah', cometText: 'hey guys my name is sam and im new on heccyeah.', cometTimeStamp: '11:59 pm'},
-    {cometTitle: 'This is my first post on HeccYeah', cometText: 'hey guys my name is sam and im new on heccyeah.', cometTimeStamp: '11:59 pm'},
+    {cometTitle: 'This is my first post on HeccYeah', cometText: 'hey guys my name is sam and im new on heccyeah.',
+      cometTimeStamp: '11:59 pm'},
+    {cometTitle: 'This is my first post on HeccYeah', cometText: 'hey guys my name is sam and im new on heccyeah.',
+      cometTimeStamp: '11:59 pm'},
 
   ];
 
@@ -33,9 +36,12 @@ export class UserProfileComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  constructor(
+    private firebaseService: FirebaseService
+  ) { }
 
   ngOnInit() {
+    this.firebaseService.getUser();
   }
 
 }

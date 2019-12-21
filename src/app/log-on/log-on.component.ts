@@ -54,6 +54,7 @@ export class LogOnComponent implements OnInit {
   signUp() {
     if (this.isValidSignUp()) {
      this.firebaseService.createUser(this.email, this.newPassword, this.firstName, this.lastName, this.username);
+     this.router.navigateByUrl('/home-page');
     } else {
         console.log('Invalid sign up');
       }

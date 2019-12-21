@@ -14,13 +14,13 @@ import {NeedAuthGuard} from './auth.guard';
 const routes: Routes = [
   {path: '', redirectTo: '/log-on', pathMatch: 'full'},
   {path: 'log-on', component: LogOnComponent},
-  {path: 'home-page', component: HomePageComponent, canActivate: [NeedAuthGuard] },
-  {path: 'user-profile', component: UserProfileComponent, canActivate: [NeedAuthGuard] },
-  {path: 'settings', component: SettingsComponent, canActivate: [NeedAuthGuard] },
-  {path: 'feed', component: FeedComponent, canActivate: [NeedAuthGuard] },
-  {path: 'help-page', component: HelpPageComponent, canActivate: [NeedAuthGuard] },
-  {path: 'messages', component: MessagesComponent, canActivate: [NeedAuthGuard] },
-  {path: 'message-details', component: MessageDetailsComponent, canActivate: [NeedAuthGuard] }
+  {path: 'home-page', component: HomePageComponent},
+  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'settings', component: SettingsComponent},
+  {path: 'feed', component: FeedComponent},
+  {path: 'help-page', component: HelpPageComponent},
+  {path: 'messages', component: MessagesComponent },
+  {path: 'message-details', component: MessageDetailsComponent}
 ];
 
 @NgModule({
