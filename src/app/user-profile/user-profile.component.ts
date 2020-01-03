@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Chat} from '../message-details/message-details.component';
-import { FirebaseService } from "../services/firebase-service/firebase.service";
+import { FirebaseService } from '../services/firebase-service/firebase.service';
 
 export interface Comet {
       cometTitle: string;
@@ -35,13 +35,17 @@ export class UserProfileComponent implements OnInit {
     {planetName: 'This is my first post on HeccYeah', planetDesc: 'hey guys my name is sam and im new on heccyeah.'},
 
   ];
-
+  username = '';
+  userhandle = '';
   constructor(
     private firebaseService: FirebaseService
   ) { }
 
   ngOnInit() {
-    this.firebaseService.getUser();
+    this.loadProfile();
   }
-
+   loadProfile() {
+     this.firebaseService.getUser();
+     debugger;
+   }
 }

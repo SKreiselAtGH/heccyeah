@@ -6,37 +6,41 @@ import * as firebase from 'firebase';
 import 'firebase/auth';
 
 import {User} from 'firebase';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService {
+export class FirebaseService implements OnInit {
 
   public ids: string[];
   observe: Observable<any>;
   private fs: any;
   loggedIn = false;
+  userRefID: any;
   name = '';
   private auth: any;
   private newUser: any;
+  private currentUser: firebase.User;
+  public signedIn: firebase.User;
   constructor(public db: AngularFirestore,
-              public http: HttpClient) { }
+              public http: HttpClient,
+              private router: Router) { }
+
+  // tslint:disable-next-line:contextual-lifecycle
+  ngOnInit() {
+    this.currentUser = firebase.auth().currentUser;
+  }
 
   initDB() {
     let check: Observable<any>;
-    check = this.db.collection('users').valueChanges();
+    check = this.db.collection('users/user_info').valueChanges();
     this.getUsers();
     console.log(this.ids);
     return check;
   }
 
-  getUsers() {
 
-  }
-
-  getUserInfo() {
-
-  }
 
   date() {
     console.log('changed');
@@ -81,7 +85,9 @@ export class FirebaseService {
   // write the data to the DB
   writeUserData(name, email, handle, firstName, lastName) {
     const db = firebase.firestore();
-    db.collection('app/users/user_info').add({
+    const userRef = db.collection('app/users/user_info');
+    // tslint:disable-next-line:no-unused-expression
+    userRef.doc(email).set({
       user_handle: handle,
       user_email: email,
       user_fullname: name,
@@ -89,7 +95,7 @@ export class FirebaseService {
       user_fname: firstName
     })
       .then(docRef => {
-        console.log('Document written with ID: ', docRef.id);
+        console.log('Document written with ID: ', docRef);
       })
       .catch(error => {
         console.error('Error adding document: ', error);
@@ -108,18 +114,19 @@ export class FirebaseService {
 
   emailLogin(email, password) {
     let obs: Observable<any>;
+    const db = firebase.firestore();
     if (this.loggedIn === true) {
       console.log('You are already logged in');
     } else {
       obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
         .then((credentials) => {
-
-          const user = firebase.auth().currentUser;
-
-          if (user) {
+          this.signedIn = firebase.auth().currentUser;
+          console.log(this.signedIn);
+          debugger;
+          if (this.signedIn) {
             this.loggedIn = true;
             console.log('we gucci');
-
+            this.router.navigateByUrl('/home-page');
           } else {
             this.loggedIn = false;
           }
@@ -133,9 +140,24 @@ export class FirebaseService {
 
   getUser() {
     const db = firebase.firestore();
-    const user = firebase.auth().currentUser;
-    const userRef = db.collection('app').doc('users').collection('user_info').doc('0jhdtF94LvpxmTNHJrpp');
-    userRef.get()
+    debugger;
+    this.currentUser = firebase.auth().currentUser;
+    const userRef = db.collection('app').doc('users').collection('user_info').doc(this.currentUser.email);
     console.log(userRef);
+    debugger;
+    userRef.get().then(doc => {
+        if (doc.exists) {
+          console.log('Document data:', doc.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('No such document!');
+        }
+      }).catch(error => {
+        console.log('Error getting document:', error);
+      });
+  }
+
+  getUsers() {
+
   }
 }

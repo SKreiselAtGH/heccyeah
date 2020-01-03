@@ -43,7 +43,6 @@ export class LogOnComponent implements OnInit {
     this.userEmail = this.email;
     if (this.userEmail.length > 0 && this.userPassword.length > 0) {
       this.firebaseService.emailLogin(this.userEmail, this.userPassword);
-      this.router.navigateByUrl('/home-page');
     }
   }
 
