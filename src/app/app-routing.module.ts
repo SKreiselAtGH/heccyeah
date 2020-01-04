@@ -8,7 +8,6 @@ import { HelpPageComponent } from './help-page/help-page.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import { LogOnComponent } from './log-on/log-on.component';
-import {NeedAuthGuard} from './auth.guard';
 
 
 const routes: Routes = [

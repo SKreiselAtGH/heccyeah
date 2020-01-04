@@ -73,8 +73,10 @@ export class FirebaseService implements OnInit {
     const fullName = firstName + ' ' + lastName;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(r => {
+        console.log(r);
+        debugger;
         this.loggedIn = true;
-        this.writeUserData( fullName, email, handle, firstName, lastName);
+        this.writeUserData( fullName, email, handle, firstName, lastName, r.user.uid );
 
       }, err => {
        console.log('cannot create new user: ', err);
@@ -83,7 +85,7 @@ export class FirebaseService implements OnInit {
   }
 
   // write the data to the DB
-  writeUserData(name, email, handle, firstName, lastName) {
+  writeUserData(name, email, handle, firstName, lastName, uid) {
     const db = firebase.firestore();
     const userRef = db.collection('app/users/user_info');
     // tslint:disable-next-line:no-unused-expression
@@ -92,7 +94,8 @@ export class FirebaseService implements OnInit {
       user_email: email,
       user_fullname: name,
       user_lname: lastName,
-      user_fname: firstName
+      user_fname: firstName,
+      UID: uid
     })
       .then(docRef => {
         console.log('Document written with ID: ', docRef);
@@ -120,8 +123,7 @@ export class FirebaseService implements OnInit {
     } else {
       obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
         .then((credentials) => {
-          this.signedIn = firebase.auth().currentUser;
-          console.log(this.signedIn);
+          console.log(credentials);
           debugger;
           if (this.signedIn) {
             this.loggedIn = true;
