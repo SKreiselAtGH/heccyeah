@@ -1,6 +1,6 @@
 # HeccyeahUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2 and Google's Firebase. We are planning to, in the future, use Ionic (https://ionicframework.com/) for mobile development and Electron (https://electronjs.org/) for native windows development.
 
 ## Development server
 
@@ -16,15 +16,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running Deployment
 
-Run 'ng build --prod' to create the prod build. Update the 'dist\index.html' href tag to '<base href="/heccyeah-ui/">'. Run 'firebase deploy'. Ensure it has deployed succesfully.
+Run 'ng build --prod' to create the prod build. Update the `dist\index.html` href tag to `<base href="/heccyeah-ui/">`. Run `firebase deploy`. Ensure it has deployed succesfully.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
