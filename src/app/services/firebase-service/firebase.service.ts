@@ -19,6 +19,7 @@ export class FirebaseService implements OnInit {
   loggedIn = false;
   userRefID: any;
   name = '';
+  user: any;
   private auth: any;
   private newUser: any;
   private currentUser: firebase.User;
@@ -124,13 +125,14 @@ export class FirebaseService implements OnInit {
       obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
         .then((credentials) => {
           console.log(credentials);
-          debugger;
-          if (this.signedIn) {
+          const user = firebase.auth().currentUser;
+          if (user) {
             this.loggedIn = true;
             console.log('we gucci');
             this.router.navigateByUrl('/home-page');
           } else {
             this.loggedIn = false;
+            console.log('we not gucci');
           }
         }).catch((error) => {
           console.log('error loggin in');
@@ -140,23 +142,26 @@ export class FirebaseService implements OnInit {
     return obs;
   }
 
-  getUser() {
+  getUser(): any {
     const db = firebase.firestore();
-    debugger;
     this.currentUser = firebase.auth().currentUser;
     const userRef = db.collection('app').doc('users').collection('user_info').doc(this.currentUser.email);
     console.log(userRef);
-    debugger;
-    userRef.get().then(doc => {
+    let obs: Observable<any>;
+    obs = from(userRef.get().then(doc => {
         if (doc.exists) {
+          this.user = doc.data;
           console.log('Document data:', doc.data());
         } else {
           // doc.data() will be undefined in this case
+          return doc.data();
           console.log('No such document!');
         }
       }).catch(error => {
         console.log('Error getting document:', error);
-      });
+      }));
+    console.log(obs);
+    return obs;
   }
 
   getUsers() {

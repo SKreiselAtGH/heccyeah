@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Chat} from '../message-details/message-details.component';
 import { FirebaseService } from '../services/firebase-service/firebase.service';
+import {Observable} from "rxjs";
 
 export interface Comet {
       cometTitle: string;
@@ -45,7 +46,9 @@ export class UserProfileComponent implements OnInit {
     this.loadProfile();
   }
    loadProfile() {
-     this.firebaseService.getUser();
-     debugger;
+     let obs1: Observable<any>;
+     this.firebaseService.getUser().subscribe(resi => {
+       console.log(resi);
+     });
    }
 }
