@@ -19,7 +19,14 @@ export class FirebaseService implements OnInit {
   loggedIn = false;
   userRefID: any;
   name = '';
-  user: any;
+  user = {
+    firstName: '',
+    lastName: '',
+    fullName: '',
+    UID: '',
+    userHandle: '',
+    userEmail: ''
+  };
   private auth: any;
   private newUser: any;
   private currentUser: firebase.User;
@@ -147,21 +154,25 @@ export class FirebaseService implements OnInit {
     this.currentUser = firebase.auth().currentUser;
     const userRef = db.collection('app').doc('users').collection('user_info').doc(this.currentUser.email);
     console.log(userRef);
-    let obs: Observable<any>;
-    obs = from(userRef.get().then(doc => {
+    userRef.get().then(doc => {
         if (doc.exists) {
-          this.user = doc.data;
+          this.user = {
+            firstName: doc.data().user_fname.toString(),
+            lastName: doc.data().user_lname.toString(),
+            fullName: doc.data().user_fullname.toString(),
+            UID: doc.data().UID.toString(),
+            userHandle: doc.data().user_handle.toString(),
+            userEmail: doc.data().user_email.toString()
+          }
           console.log('Document data:', doc.data());
         } else {
-          // doc.data() will be undefined in this case
-          return doc.data();
           console.log('No such document!');
         }
       }).catch(error => {
         console.log('Error getting document:', error);
-      }));
-    console.log(obs);
-    return obs;
+      });
+    console.log(this.user);
+    return this.user;
   }
 
   getUsers() {

@@ -45,10 +45,9 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.loadProfile();
   }
-   loadProfile() {
-     let obs1: Observable<any>;
-     this.firebaseService.getUser().subscribe(resi => {
-       console.log(resi);
-     });
+
+  loadProfile() {
+     const user = this.firebaseService.getUser();
+     console.log(user);
    }
 }
